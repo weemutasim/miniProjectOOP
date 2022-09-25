@@ -1,4 +1,5 @@
 import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
 
 import java.io.FileWriter;
 import java.util.Scanner;
@@ -64,17 +65,29 @@ public class Admin {
         return slmenu;
     }
     public void dataWrite() {
-        JSONObject coffee = new JSONObject();
-        System.out.print("Enter add Item No. >> ");
-        coffee.put("item_no", sc.nextInt());
-        System.out.print("Enter add Item Name >> ");
-        coffee.put("item_name", sc.next());
-        System.out.print("Enter add Price >> ");
-        coffee.put("price", sc.nextDouble());
-        System.out.print("Enter add Stock >> ");
-        coffee.put("stock", sc.nextInt());
 
-        obj.put("coffee", coffee);
+        //JSONArray coffee = new JSONArray();
+        /*System.out.print("Enter add Item No. >> ");
+        coffee.add(sc.nextInt());
+        System.out.print("Enter add Item Name >> ");
+        coffee.add(sc.next());
+        System.out.print("Enter add Price >> ");
+        coffee.add(sc.nextDouble());
+        System.out.print("Enter add Stock >> ");
+        coffee.add(sc.nextInt());*/
+
+        JSONObject objcf = new JSONObject();
+        System.out.print("Enter add Item No. >> ");
+        objcf.put("itemId", sc.nextInt());
+        System.out.print("Enter add Item Name >> ");
+        objcf.put("itemName", sc.next());
+        System.out.print("Enter add Price >> ");
+        objcf.put("price", sc.nextDouble());
+        System.out.print("Enter add Stock >> ");
+        objcf.put("stock", sc.nextInt());
+
+        obj.put("coffee", objcf);
+        //obj.put("coffee", coffee);
 
         try(FileWriter file = new FileWriter("./data_stock.json")) {
             file.write(obj.toJSONString());
